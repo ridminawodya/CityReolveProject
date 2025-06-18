@@ -528,8 +528,8 @@ body {
 }
 
 .footer {
-        background: var(--text-primary);
-        color: white;
-        text-align: center;
-        padding: 3rem 0;
+    background: var(--text-primary);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
 }
