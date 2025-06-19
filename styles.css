@@ -172,7 +172,8 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 120px;
+    padding-top: 150px;
+    padding-bottom: 100px;
 }
 
 .hero-section::before {
@@ -387,6 +388,46 @@ body {
 
 .features-visual {
     position: relative;
+}
+
+.image-slider-container{
+    width: 250px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    padding: 15px;
+}
+
+.image-slide img{
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.image-slide.active{
+    opacity: 1;
 }
 
 .features-text h2 {

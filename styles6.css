@@ -501,6 +501,13 @@ body {
     cursor: pointer;
 }
 
+.footer {
+    background: var(--text-primary);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
 @media (max-width: 992px) {
     body {
         padding-left: 0;
