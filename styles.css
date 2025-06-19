@@ -268,6 +268,10 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
+    background-image: url('council.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .phone-screen::before {
@@ -281,25 +285,6 @@ body {
 @keyframes shine {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
-}
-
-.app-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.app-name {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.app-tagline {
-    font-size: 1rem;
-    opacity: 0.9;
-    text-align: center;
-    padding: 0 1rem;
 }
 
 .feature-grid {
@@ -388,46 +373,6 @@ body {
 
 .features-visual {
     position: relative;
-}
-
-.image-slider-container{
-    width: 250px;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.image-slide{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    padding: 15px;
-}
-
-.image-slide img{
-    max-width: 90%;
-    max-height: 80%;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-
-.image-slide.active{
-    opacity: 1;
 }
 
 .features-text h2 {
@@ -548,7 +493,19 @@ body {
 }
 
 .phone-small .phone-screen {
-    background: linear-gradient(45deg, var(--primary-green), #16a34a);
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--primary-green);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-size: 0.8rem;
 }
 
