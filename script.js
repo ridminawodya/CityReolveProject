@@ -43,6 +43,7 @@ document.querySelectorAll('.stat-item').forEach(stat => {
     observer.observe(stat);
 });
 
+//Animate Number Function
 function animateNumber(element, target) {
     let current = 0;
     const increment = target / 100;

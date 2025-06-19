@@ -1,7 +1,9 @@
+//Mobile menu toggle
 function toggleMobileMenu() {
     document.getElementById('sidebar').classList.toggle('show');
 }
 
+//Global variables
 let selectedTaxType = '';
 let selectedTaxAmount = 0;
 let selectedPaymentMethodType = '';
@@ -17,6 +19,7 @@ function payTax(taxType, amount) {
     window.scrollTo({ top: document.getElementById('paymentSection').offsetTop - 100, behavior: 'smooth' });
 }
 
+//Tax Selection Function
 function formatTaxType(type) {
     switch (type) {
         case 'property': return 'Property Tax';
@@ -27,6 +30,7 @@ function formatTaxType(type) {
     }
 }
 
+//Payment Method Selection
 function selectPaymentMethod(method) {
     const paymentMethods = document.querySelectorAll('.payment-method');
     paymentMethods.forEach(pm => pm.classList.remove('selected'));
@@ -52,6 +56,7 @@ function selectPaymentMethod(method) {
     }
 }
 
+//Payment Cancellation
 function cancelPayment() {
     document.getElementById('paymentSection').style.display = 'none';
     document.getElementById('paymentForm').reset();
@@ -61,6 +66,7 @@ function cancelPayment() {
     document.getElementById('paymentAlert').innerHTML = '';
 }
 
+//Form Submission Handler
 document.getElementById('paymentForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 

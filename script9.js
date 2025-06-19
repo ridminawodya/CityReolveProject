@@ -1,3 +1,4 @@
+//Selecting important elements
 const loginForm = document.getElementById('loginForm');
 const messageDiv = document.getElementById('message');
 const submitButton = loginForm.querySelector('button[type="submit"]');
@@ -9,6 +10,7 @@ const validCredentials = {
     password: 'cityresolve123'
 };
 
+//Handling form submission
 loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
             
@@ -42,6 +44,7 @@ loginForm.addEventListener('submit', function(e) {
     }, 1500);
 });
 
+//Showing messages to the user
 function showMessage(message, type) {
     const alertClass = type === 'error' ? 'alert-danger' : 'alert-success';
     const icon = type === 'error' ? 'bi-exclamation-triangle' : 'bi-check-circle';
@@ -53,6 +56,7 @@ function showMessage(message, type) {
     `;
 }
 
+//Showing and hiding loading state on button
 function showLoading(isLoading) {
     if (isLoading) {
         submitButton.disabled = true;
@@ -63,13 +67,13 @@ function showLoading(isLoading) {
     }
 }
 
-// Forgot password functionality
+// Forgot password link
 document.getElementById('forgotPassword').addEventListener('click', function(e) {
     e.preventDefault();
     showMessage('Password reset functionality would be implemented here. For demo, use: admin / cityresolve123', 'success');
 });
 
-// Add smooth focus animations
+// Add smooth focus animations on input fields
 const inputs = document.querySelectorAll('.form-control');
 inputs.forEach(input => {
     input.addEventListener('focus', function() {

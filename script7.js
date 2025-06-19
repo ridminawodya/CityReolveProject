@@ -1,3 +1,4 @@
+//Variables to track edit state and original data
 let isEditing = false;
 let originalData = {};
         
@@ -33,7 +34,7 @@ function toggleEdit(section) {
         cancelEdit(section);
     }
 }
-        
+       
 function cancelEdit(section) {
     const form = document.getElementById('personalForm');
     const inputs = form.querySelectorAll('input, select');

@@ -1,3 +1,4 @@
+//Store references to important elements in signup form
 const signupForm = document.getElementById('signupForm');
 const messageDiv = document.getElementById('message');
 const submitButton = signupForm.querySelector('button[type="submit"]');
@@ -11,6 +12,7 @@ const strengthText = document.getElementById('strengthText');
 passwordInput.addEventListener('input', function() {
     const password = this.value;
     const strength = checkPasswordStrength(password);
+//Updates strength indicator
     updatePasswordStrength(strength);
 });
 
@@ -36,6 +38,7 @@ function checkPasswordStrength(password) {
     return { score, feedback, password };
 }
 
+//updates visual strength bar and message based on score
 function updatePasswordStrength(strength) {
     const { score, feedback, password } = strength;
     const percentage = (score / 5) * 100;
