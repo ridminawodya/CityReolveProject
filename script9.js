@@ -67,12 +67,6 @@ function showLoading(isLoading) {
     }
 }
 
-// Forgot password link
-document.getElementById('forgotPassword').addEventListener('click', function(e) {
-    e.preventDefault();
-    showMessage('Password reset functionality would be implemented here. For demo, use: admin / cityresolve123', 'success');
-});
-
 // Add smooth focus animations on input fields
 const inputs = document.querySelectorAll('.form-control');
 inputs.forEach(input => {
@@ -85,9 +79,3 @@ inputs.forEach(input => {
     });
 });
 
-// Add demo credentials hint
-setTimeout(() => {
-    if (!messageDiv.innerHTML) {
-        showMessage('Demo credentials: admin / cityresolve123', 'success');
-    }
-}, 2000);
