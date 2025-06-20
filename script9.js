@@ -67,6 +67,12 @@ function showLoading(isLoading) {
     }
 }
 
+//Forgot password link
+document.getElementById('forgotPassword').addEventListener('click',function(e){
+    e.preventDefault();
+    showMessage('Password reset functionality would be implemented here.','success');
+})
+
 // Add smooth focus animations on input fields
 const inputs = document.querySelectorAll('.form-control');
 inputs.forEach(input => {
