@@ -322,6 +322,13 @@ body {
     cursor: pointer;
 }
 
+.footer {
+    background: var(--text-primary);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
 @media (max-width: 992px) {
     body {
         padding-left: 0;
@@ -376,14 +383,14 @@ body {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-translate fs-5"></i>
                         <span class="nav-text">Sinhala</span>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-globe fs-5"></i>
                         <span class="nav-text">English</span>
                     </a>
@@ -399,47 +406,47 @@ body {
 
     <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
 
-            <a class="nav-link" href="submit.html">
+            <a class="nav-link" href="/submit">
                 <i class="bi bi-pencil-square fs-5"></i>
                 <span class="nav-text">Submit Complaint</span>
             </a>
 
-            <a class="nav-link" href="track.html">
+            <a class="nav-link" href="/track">
                 <i class="bi bi-search fs-5"></i>
                 <span class="nav-text">Track Status</span>
             </a>
 
-            <a class="nav-link" href="community.html">
+            <a class="nav-link" href="/community">
                 <i class="bi bi-people-fill fs-5"></i>
                 <span class="nav-text">Community</span>
             </a>
 
-            <a class="nav-link" href="timetable.html">
+            <a class="nav-link" href="/timetable">
                 <i class="bi bi-calendar-check fs-5"></i>
                 <span class="nav-text">Service Schedule</span>
             </a>
 
-            <a class="nav-link" href="about.html">
+            <a class="nav-link" href="/about">
                 <i class="bi bi-info-circle fs-5"></i>
                 <span class="nav-text">About Us</span>
             </a>
 
-            <a class="nav-link" href="payment.html">
+            <a class="nav-link" href="/payment">
                 <i class="bi bi-calendar-check fs-5"></i>
                 <span class="nav-text">Tax Payment</span>
             </a>
 
-            <a class="nav-link mt-auto" href="profile.html">
+            <a class="nav-link mt-auto" href="/profile">
                 <i class="bi bi-person-circle fs-5"></i>
                 <span class="nav-text">Profile</span>
             </a>
 
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href="/login">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Logout</span>
             </a>
@@ -581,6 +588,12 @@ body {
 
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CityResolve. All rights reserved. Connecting citizens with local government.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>

@@ -278,7 +278,7 @@ body {
     color: white;
     position: relative;
     overflow: hidden;
-    background-image: url('council.png');
+    background-image: url('{{ asset ('assets/photos/council.png')}}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -613,14 +613,14 @@ body {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-translate fs-5"></i>
                         <span class="nav-text">Sinhala</span>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-globe fs-5"></i>
                         <span class="nav-text">English</span>
                     </a>
@@ -633,47 +633,47 @@ body {
 <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
         <div class="d-flex flex-column h-100 py-20">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
 
-            <a class="nav-link" href="submit.html">
+            <a class="nav-link" href="/submit">
                 <i class="bi bi-pencil-square fs-5"></i>
                 <span class="nav-text">Submit Complaint</span>
             </a>
 
-            <a class="nav-link" href="track.html">
+            <a class="nav-link" href="/track">
                 <i class="bi bi-search fs-5"></i>
                 <span class="nav-text">Track Status</span>
             </a>
 
-            <a class="nav-link" href="community.html">
+            <a class="nav-link" href="/community">
                 <i class="bi bi-people-fill fs-5"></i>
                 <span class="nav-text">Community</span>
             </a>
 
-            <a class="nav-link" href="timetable.html">
+            <a class="nav-link" href="/timetable">
                 <i class="bi bi-calendar-check fs-5"></i>
                 <span class="nav-text">Service Schedule</span>
             </a>
 
-            <a class="nav-link" href="about.html">
+            <a class="nav-link" href="/about">
                 <i class="bi bi-info-circle fs-5"></i>
                 <span class="nav-text">About Us</span>
             </a>
 
-            <a class="nav-link" href="payment.html">
+            <a class="nav-link" href="/payment">
                 <i class="bi bi-credit-card fs-5"></i>
                 <span class="nav-text">Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="profile.html">
+            <a class="nav-link mt-auto" href="/profile">
                 <i class="bi bi-person-circle fs-5"></i>
                 <span class="nav-text">Profile</span>
             </a>
 
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href="/login">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Logout</span>
             </a>
@@ -688,7 +688,7 @@ body {
             <div class="hero-text">
                 <h1>Empowering Citizens. Resolving Issues.</h1>
                 <p>CityResolve is your one-stop platform for reporting and tracking municipal complaints. Ever wish reporting a local issue was easier? With CityResolve, it is! We're here to help you connect directly with your municipal council, making sure your concerns are heard and resolved. Join the community and make your city better!</p>
-                <a href="submit.html" class="btn-primary">
+                <a href="/submit" class="btn-primary">
                     <i class="bi bi-pencil-square me-2"></i>Submit a Complaint
                 </a>
             </div>
@@ -769,17 +769,17 @@ body {
             <h2 class="section-title">Platform Features</h2>
             <div class="phones-mockup">
                 <div class="phone-small">
-                    <div class="phone-screen" style="background-image: url('complain.png');">
+                    <div class="phone-screen" style="background-image: url('{{ asset('assets/photos/complain.png')}}');">
                     </div>
                 </div>
 
                 <div class="phone-small">
-                    <div class="phone-screen" style="background-image: url('payment.png');">
+                    <div class="phone-screen" style="background-image: url('{{ asset('assets/photos/payment.png')}}');">
                     </div>
                 </div>
 
                 <div class="phone-small">
-                    <div class="phone-screen" style="background-image: url('status.png');">
+                    <div class="phone-screen" style="background-image: url('{{ asset('assets/photos/status.png')}}');">
                     </div>
                 </div>
 

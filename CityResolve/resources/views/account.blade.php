@@ -473,7 +473,7 @@ body {
         </form>
 
         <div class="login-link">
-            <p>Already have an account? <a href="login.html">Sign In</a></p>
+            <p>Already have an account? <a href="/login">Sign In</a></p>
         </div>
     </div>
 
@@ -552,8 +552,6 @@ function updatePasswordStrength(strength) {
         strengthText.className = 'strength-text text-success';
     }
 }
-
-
     </script>
 </body>
 </html>

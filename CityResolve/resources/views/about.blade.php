@@ -9,145 +9,145 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary-green: #22c55e;
-    --primary-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-    --secondary-gradient: linear-gradient(135deg, #34d399 0%, #22c55e 100%);
-    --light-green: #dcfce7;
-    --background-green: #f0fdf4;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --shadow-soft: 0 10px 40px rgba(34, 197, 94, 0.1);
-    --shadow-hover: 0 20px 60px rgba(34, 197, 94, 0.15);
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --success-gradient: linear-gradient(135deg,#22c55e 0%,#16a34a 100%);
-}
+            --primary-green: #22c55e;
+            --primary-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --secondary-gradient: linear-gradient(135deg, #34d399 0%, #22c55e 100%);
+            --light-green: #dcfce7;
+            --background-green: #f0fdf4;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --shadow-soft: 0 10px 40px rgba(34, 197, 94, 0.1);
+            --shadow-hover: 0 20px 60px rgba(34, 197, 94, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --success-gradient: linear-gradient(135deg,#22c55e 0%,#16a34a 100%);
+        }
 
-* {
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+        * {
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         
-body { 
-    font-family: 'Inter', sans-serif; 
-    background: var(--background-green);
-    min-height: 100vh;
-    line-height: 1.6;
-}
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--background-green);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
-.animated-bg {
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    z-index: -1;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    overflow: hidden;
-}
+        .animated-bg {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            overflow: hidden;
+        }
 
-.animated-bg::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%; 
-    width: 200%; 
-    height: 200%;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 2px, transparent 2px);
-    background-size: 40px 40px;
-    animation: float 20s ease-in-out infinite;
-}
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%; 
+            width: 200%; 
+            height: 200%;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 2px, transparent 2px);
+            background-size: 40px 40px;
+            animation: float 20s ease-in-out infinite;
+        }
 
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(-20px, -20px) rotate(180deg); }
-}
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(180deg); }
+        }
 
-.navbar {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(34, 197, 94, 0.1);
-    padding: 1rem 0;
-    box-shadow: 0 2px 20px rgba(34, 197, 94, 0.1);
-}
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(34, 197, 94, 0.1);
+        }
 
-.navbar-brand {
-    font-weight: 800; 
-    font-size: 1.8rem; 
-    color: var(--primary-green) !important; 
-    display: flex; 
-    align-items: center;
-}
+        .navbar-brand {
+            font-weight: 800; 
+            font-size: 1.8rem; 
+            color: var(--primary-green) !important; 
+            display: flex; 
+            align-items: center;
+        }
 
-.navbar-brand i {
-    font-size: 2.2rem; 
-    margin-right: 10px;
-    color: var(--primary-green);
-}
+        .navbar-brand i {
+            font-size: 2.2rem; 
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
 
-.navbar-nav .nav-link {
-    color: var(--text-primary) !important;
-    font-weight: 500; 
-    margin: 0 10px; 
-    padding: 8px 16px !important;
-    border-radius: 25px; 
-    transition: all 0.3s ease;
-}
+        .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500; 
+            margin: 0 10px; 
+            padding: 8px 16px !important;
+            border-radius: 25px; 
+            transition: all 0.3s ease;
+        }
 
-.navbar-nav .nav-link:hover {
-    background: var(--light-green);
-    color: var(--primary-green) !important;
-    transform: translateY(-2px);
-}
+        .navbar-nav .nav-link:hover {
+            background: var(--light-green);
+            color: var(--primary-green) !important;
+            transform: translateY(-2px);
+        }
 
-.sidebar-nav {
-    position: fixed;
-    left: 0; 
-    top: 0; 
-    height: 100vh; 
-    width: 80px;
-    background: rgba(30, 41, 59, 0.97);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .sidebar-nav {
+            position: fixed;
+            left: 0; 
+            top: 0; 
+            height: 100vh; 
+            width: 80px;
+            background: rgba(30, 41, 59, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.sidebar-nav:hover { 
-    width: 280px; 
-}
+        .sidebar-nav:hover { 
+            width: 280px; 
+        }
 
-.sidebar-nav .nav-item { 
-    margin: 8px 0; 
-}
+        .sidebar-nav .nav-item { 
+            margin: 8px 0; 
+        }
 
-.sidebar-nav .nav-link {
-    padding: 16px 20px; 
-    color: rgba(255, 255, 255, 0.8);
-    display: flex; 
-    align-items: center; 
-    text-decoration: none;
-    transition: all 0.3s ease; 
-    border-radius: 0 30px 30px 0;
-    margin-right: 15px; 
-    position: relative; 
-    overflow: hidden;
-}
+        .sidebar-nav .nav-link {
+            padding: 16px 20px; 
+            color: rgba(255, 255, 255, 0.8);
+            display: flex; 
+            align-items: center; 
+            text-decoration: none;
+            transition: all 0.3s ease; 
+            border-radius: 0 30px 30px 0;
+            margin-right: 15px; 
+            position: relative; 
+            overflow: hidden;
+        }
 
-.sidebar-nav .nav-link::before {
-    content: ''; 
-    position: absolute; 
-    left: 0; top: 0; 
-    height: 100%; 
-    width: 0;
-    background: var(--success-gradient); 
-    transition: width 0.3s ease; 
-    z-index: -1;
-}
+        .sidebar-nav .nav-link::before {
+            content: ''; 
+            position: absolute; 
+            left: 0; top: 0; 
+            height: 100%; 
+            width: 0;
+            background: var(--success-gradient); 
+            transition: width 0.3s ease; 
+            z-index: -1;
+        }
 
-.sidebar-nav .d-flex{
-    padding-top: 150px;
-}
+        .sidebar-nav .d-flex{
+            padding-top: 150px;
+        }
 
 .sidebar-nav .nav-link:hover { 
     color: white; 
@@ -454,14 +454,14 @@ body {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-translate fs-5"></i>
                         <span class="nav-text">Sinhala</span>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-globe fs-5"></i>
                         <span class="nav-text">English</span>
                     </a>
@@ -474,47 +474,47 @@ body {
 <!-- Sidebar Navigation -->
     <div class="sidebar-nav">
         <div class="d-flex flex-column h-100 py-20">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
 
-            <a class="nav-link" href="submit.html">
+            <a class="nav-link" href="/submit">
                 <i class="bi bi-pencil-square fs-5"></i>
                 <span class="nav-text">Submit Complaint</span>
             </a>
 
-            <a class="nav-link" href="track.html">
+            <a class="nav-link" href="/track">
                 <i class="bi bi-search fs-5"></i>
                 <span class="nav-text">Track Status</span>
             </a>
 
-            <a class="nav-link" href="community.html">
+            <a class="nav-link" href="/community">
                 <i class="bi bi-people-fill fs-5"></i>
                 <span class="nav-text">Community</span>
             </a>
 
-            <a class="nav-link" href="timetable.html">
+            <a class="nav-link" href="/timetable">
                 <i class="bi bi-calendar-check fs-5"></i>
                 <span class="nav-text">Service Schedule</span>
             </a>
 
-            <a class="nav-link" href="about.html">
+            <a class="nav-link" href="/about">
                 <i class="bi bi-info-circle fs-5"></i>
                 <span class="nav-text">About Us</span>
             </a>
 
-            <a class="nav-link" href="payment.html">
+            <a class="nav-link" href="/payment">
                 <i class="bi bi-credit-card fs-5"></i>
                 <span class="nav-text">Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="profile.html">
+            <a class="nav-link mt-auto" href="/profile">
                 <i class="bi bi-person-circle fs-5"></i>
                 <span class="nav-text">Profile</span>
             </a>
 
-            <a class="nav-link" href="login.html">
+            <a class="nav-link" href="/login">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Logout</span>
             </a>

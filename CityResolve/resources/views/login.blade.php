@@ -339,7 +339,7 @@ body {
         </form>
 
         <div class="signup-link">
-            <p>Don't have an account? <a href="account.html">Create Account</a></p>
+            <p>Don't have an account? <a href="/account">Create Account</a></p>
         </div>
     </div>
 
@@ -382,7 +382,7 @@ loginForm.addEventListener('submit', function(e) {
             showMessage('Login successful! Redirecting...', 'success');
             setTimeout(() => {
 // Redirect to dashboard or home page
-                window.location.href = 'index.html';
+                window.location.href = '/home';
             }, 1500);
         } else {
             showMessage('Invalid username or password. Please try again.', 'error');
@@ -431,7 +431,6 @@ inputs.forEach(input => {
         this.parentElement.style.transform = 'translateY(0)';
     });
 });
-
 
     </script>
 </body>

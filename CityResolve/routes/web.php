@@ -6,38 +6,39 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/', function () {
+Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/', function () {
+Route::get('/account', function () {
     return view('account');
 });
 
-Route::get('/', function () {
+Route::get('/community', function () {
     return view('community');
 });
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/', function () {
+Route::get('/payment', function () {
     return view('payment');
 });
 
-Route::get('/', function () {
+Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/', function () {
+Route::get('/submit', function () {
     return view('submit');
 });
 
-Route::get('/', function () {
+Route::get('/timetable', function () {
     return view('timetable');
 });
 
-Route::get('/', function () {
+Route::get('/track', function () {
     return view('track');
 });
+?>
