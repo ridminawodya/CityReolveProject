@@ -166,25 +166,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('complaintForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-            
-// Show success message
-    const successMessage = document.getElementById('successMessage');
-    successMessage.style.display = 'block';
-            
-// Scroll to success message
-    successMessage.scrollIntoView({ behavior: 'smooth' });
-            
-// Hide success message after 3 seconds
-    setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 3000);
-            
-// Reset form
-    this.reset();
-});
-    </script>
+    <script src="{{asset('js/script2.js')}}"></script>
 </body>
 </html>
