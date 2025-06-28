@@ -1,4 +1,8 @@
-        // Add scroll effect to navbar
+function toggleMobileMenu() {
+    document.getElementById('sidebar').classList.toggle('show');
+}
+
+// Add scroll effect to navbar
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {

@@ -1,4 +1,8 @@
-       // Track form functionality
+function toggleMobileMenu() {
+    document.getElementById('sidebar').classList.toggle('show');
+}
+ 
+ // Track form functionality
 document.getElementById('trackForm').addEventListener('submit', function(e) {
     e.preventDefault();
             

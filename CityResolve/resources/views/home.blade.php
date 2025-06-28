@@ -12,7 +12,6 @@
 <body>
     <div class="animated-bg"></div>
     
-    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -42,8 +41,11 @@
         </div>
     </nav>
 
-<!-- Sidebar Navigation -->
-    <div class="sidebar-nav">
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100 py-20">
             <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>

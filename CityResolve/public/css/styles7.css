@@ -52,8 +52,6 @@ body {
     border-bottom: 1px solid rgba(34, 197, 94, 0.1);
     padding: 1rem 0;
     box-shadow: 0 2px 20px rgba(34, 197, 94, 0.1);
-    height: var(--navbar-height);
-    z-index: 1050;
 }
 
 .navbar-brand {
@@ -479,11 +477,6 @@ body {
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg); 
-    }
-}
 
 .mobile-menu-toggle {
     display: none;

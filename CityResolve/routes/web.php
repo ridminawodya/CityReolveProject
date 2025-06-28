@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/account', function () {
@@ -16,10 +16,6 @@ Route::get('/account', function () {
 
 Route::get('/community', function () {
     return view('community');
-});
-
-Route::get('/login', function () {
-    return view('login');
 });
 
 Route::get('/payment', function () {
@@ -41,4 +37,5 @@ Route::get('/timetable', function () {
 Route::get('/track', function () {
     return view('track');
 });
-?>
+
+require __DIR__.'/auth.php';

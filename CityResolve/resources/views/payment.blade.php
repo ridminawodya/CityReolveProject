@@ -42,11 +42,11 @@
     </nav>
 
 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-        <i class="bi bi-list"></i>
-    </button>
+    <i class="bi bi-list"></i>
+</button>
 
 <div class="sidebar-nav" id="sidebar">
-        <div class="d-flex flex-column h-100">
+        <div class="d-flex flex-column h-100 py-20">
             <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
@@ -96,7 +96,7 @@
 
 <div class="main-content">
         <div class="container">
-<div class="page-header">
+            <div class="page-header">
                 <h1 class="page-title">
                     <i class="bi bi-credit-card"></i>
                     Municipal Tax Payment
@@ -104,7 +104,7 @@
                 <p class="page-subtitle">Manage and pay your municipal taxes securely online</p>
             </div>
 
-<div class="tax-overview">
+            <div class="tax-overview">
                 <div class="tax-card overdue">
                     <div class="tax-card-header">
                         <div class="tax-type">Property Tax</div>

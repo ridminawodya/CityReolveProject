@@ -44,8 +44,12 @@
         </div>
     </nav>
 
+<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+    <i class="bi bi-list"></i>
+</button>
+
 <!-- Sidebar Navigation -->
-    <div class="sidebar-nav">
+    <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100 py-20">
             <a class="nav-link" href="/home">
                 <i class="bi bi-house-door nav-icon fs-5"></i>

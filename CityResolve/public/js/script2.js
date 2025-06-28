@@ -1,4 +1,8 @@
-        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+function toggleMobileMenu() {
+    document.getElementById('sidebar').classList.toggle('show');
+}
+
+document.getElementById('complaintForm').addEventListener('submit', function(e) {
     e.preventDefault();
             
 // Show success message
