@@ -239,9 +239,72 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 CityResolve. All rights reserved. Connecting citizens with local government.</p>
+    <footer class="footer mt-auto">
+        <div class="container py-5">
+            <div class="row">
+
+                <!-- Column 1: Quick Links -->
+                <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50"> Services & Permits</a></li>
+                        <li><a href="#" class="text-white-50"> Online Payments</a></li>
+                        <li><a href="#" class="text-white-50"> Public Notices</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Contact Us -->
+                <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt-fill me-2 text-white-50"></i> No. 15, Peradeniya Road, Kandy 20000, Sri Lanka.</li>
+                        <li><a href="tel:+1234567890" class="text-white-50"><i class="bi bi-telephone-fill me-2"></i> +(94) 81 223 4567</a></li>
+                        <li><a href="mailto:info@cityresolve.gov" class="text-white-50"><i class="bi bi-envelope-fill me-2"></i> info@cityresolve.gov</a></li><br>
+                        <li class="mt-3 text-white-50 fw-bold">Office Hours:</li>
+                        <li class="text-white-50">Mon - Fri: 8:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Stay Connected -->
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h5>Stay Connected</h5>
+                    <p class="text-white-50">Follow us on social media for updates and news.</p>
+                    <div class="d-flex justify-content-center gap-2 mb-4 social-icon-wrapper">
+
+                        <a href="https://facebook.com/yourcouncil" target="_blank" aria-label="Facebook"
+                           class="social-icon-link facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="https://instagram.com/yourcouncil" target="_blank" aria-label="Instagram"
+                           class="social-icon-link instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="https://twitter.com/yourcouncil" target="_blank" aria-label="Twitter"
+                           class="social-icon-link twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+
+                        <a href="https://linkedin.com/company/yourcouncil" target="_blank" aria-label="LinkedIn"
+                           class="social-icon-link linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Copyright Bar -->
+        <div class="container text-center">
+            <span class="text-white-50">
+                &copy; <span id="current-year-bottom"></span> CityResolve Municipal Council. All rights reserved.
+            </span>
+            <span class="d-block d-md-inline-block ms-md-3">
+                <a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a> |
+                <a href="#" class="text-white-50 text-decoration-none ms-2">Terms of Service</a>
+            </span>
         </div>
     </footer>
 

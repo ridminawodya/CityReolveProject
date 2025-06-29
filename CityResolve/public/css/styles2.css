@@ -1,4 +1,4 @@
-        * {
+* {
     font-family: 'Inter', sans-serif;
 }
         
@@ -307,6 +307,60 @@ body {
     display: none;
 }
 
+.footer {
+    background: var(--text-primary);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 0.9rem;
+}
+
+.footer h5{
+    color: var(--primary-green);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+}
+
+.footer .list-unstyled li{
+    margin-bottom: 0.75rem;
+}
+
+.footer .list-unstyled a{
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .list-unstyled a:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+.footer .social-icon-link{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1.4rem;;
+}
+
+.footer .social-icon-link:hover{
+    transform: translateY(-2px) scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.footer .social-icon-link.facebook:hover { background-color: #1877f2; border-color: #1877f2;} 
+.footer .social-icon-link.instagram:hover { background-image: linear-gradient(to top right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); border-color: transparent; } 
+.footer .social-icon-link.twitter:hover { background-color: #1da1f2; border-color: #1da1f2; } 
+.footer .social-icon-link.linkedin:hover { background-color: #0a66c2; border-color: #0a66c2; }
+
 @media (max-width: 992px) {
     body {
         padding-left: 0;
@@ -337,9 +391,17 @@ body {
     }
 }
 
-.footer {
-    background: var(--text-primary);
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
+@media (max-width: 767.98px) { /* Bootstrap's 'sm' breakpoint */
+            /* Adjustments for footer columns to stack on very small screens */
+    .footer .row > div {
+        margin-bottom: 2rem; /* Add space between stacked columns */
+    }
+    .footer .row > div:last-child {
+        margin-bottom: 0; /* No margin on the last stacked column */
+    }
+            /* Center social icons on extra small screens when stacked */
+    .footer .social-icon-wrapper {
+        justify-content: center !important; /* Force center on small screens */
+    }
 }
+

@@ -14,6 +14,10 @@ Route::get('/account', function () {
     return view('account');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/community', function () {
     return view('community');
 });
