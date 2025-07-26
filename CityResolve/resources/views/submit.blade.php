@@ -13,8 +13,7 @@
 <body>
     <div class="animated-bg"></div>
 
-<!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="bi bi-buildings"></i>CityResolve
@@ -47,10 +46,9 @@
     <i class="bi bi-list"></i>
 </button>
 
-<!-- Sidebar Navigation -->
-    <div class="sidebar-nav" id="sidebar">
+<div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100 py-20">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
@@ -82,26 +80,24 @@
 
             <a class="nav-link" href="/payment">
                 <i class="bi bi-credit-card fs-5"></i>
-                <span class="nav-text">Payments</span>
+                <span class="nav-text">Tax Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="/profile">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="nav-text">Profile</span>
+            <a class="nav-link mt-auto" href="/account">
+                <i class="bi bi-box-arrow-right fs-5"></i>
+                <span class="nav-text">Sign Up</span>
             </a>
 
             <a class="nav-link" href="/login">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-                <span class="nav-text">Logout</span>
+                <i class="bi bi-person-circle fs-5"></i>
+                <span class="nav-text">Login</span>
             </a>
 
         </div>
     </div>
 
-<!-- Main Content Area -->
-    <div class="main-content">
-<!-- Main Form Section -->
-        <section class="form-section">
+<div class="main-content">
+<section class="form-section">
         <div class="form-container">
             <h2 class="form-title">
                 <i class="bi bi-send"></i> Submit a Complaint
@@ -112,6 +108,36 @@
             </div>
 
             <form id="complaintForm">
+                {{-- Added fields for First Name, Last Name, Email Address, and Contact No. --}}
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-person"></i> First Name
+                    </label>
+                    <input type="text" class="form-control" placeholder="Enter your first name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-person"></i> Last Name
+                    </label>
+                    <input type="text" class="form-control" placeholder="Enter your last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-envelope"></i> Email Address
+                    </label>
+                    <input type="email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="bi bi-phone"></i> Contact No
+                    </label>
+                    <input type="tel" class="form-control" placeholder="Enter your contact number" required>
+                </div>
+                {{-- End of added fields --}}
+
                 <div class="form-group">
                     <label class="form-label">
                         <i class="bi bi-tag"></i> Category
@@ -166,7 +192,6 @@
         <div class="container py-5">
             <div class="row">
 
-                <!-- Column 1: Quick Links -->
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
@@ -176,7 +201,6 @@
                     </ul>
                 </div>
 
-                <!-- Column 2: Contact Us -->
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Contact Us</h5>
                     <ul class="list-unstyled">
@@ -188,7 +212,6 @@
                     </ul>
                 </div>
 
-                <!-- Column 3: Stay Connected -->
                 <div class="col-md-4 col-lg-4 text-center">
                     <h5>Stay Connected</h5>
                     <p class="text-white-50">Follow us on social media for updates and news.</p>
@@ -219,7 +242,6 @@
             </div>
         </div>
 
-        <!-- Bottom Copyright Bar -->
         <div class="container text-center">
             <span class="text-white-50">
                 &copy; <span id="current-year-bottom"></span> CityResolve Municipal Council. All rights reserved.

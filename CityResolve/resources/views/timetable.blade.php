@@ -47,7 +47,7 @@
 
     <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
@@ -79,17 +79,17 @@
 
             <a class="nav-link" href="/payment">
                 <i class="bi bi-calendar-check fs-5"></i>
-                <span class="nav-text">Tax Payment</span>
+                <span class="nav-text">Tax Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="/profile">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="nav-text">Profile</span>
+            <a class="nav-link mt-auto" href="/account">
+                <i class="bi bi-box-arrow-right fs-5"></i>
+                <span class="nav-text">Sign Up</span>
             </a>
 
             <a class="nav-link" href="/login">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-                <span class="nav-text">Logout</span>
+                <i class="bi bi-person-circle fs-5"></i>
+                <span class="nav-text">Login</span>
             </a>
         </div>
     </div>

@@ -123,4 +123,14 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // config/app.php
+
+    'locale' => 'en', // Default language
+    'fallback_locale' => 'en', // Fallback if a translation is missing
+
+    'available_locales' => [
+        'en' => 'English',
+        'si' => 'සිංහල', // Sinhala
+],
+
 ];
