@@ -24,14 +24,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
+                        <a class="nav-link" href="#">
                         <i class="bi bi-translate fs-5"></i>
                         <span class="nav-text">Sinhala</span>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
+                        <a class="nav-link" href="#">
                         <i class="bi bi-globe fs-5"></i>
                         <span class="nav-text">English</span>
                     </a>
@@ -82,7 +82,7 @@
                 <span class="nav-text">Tax Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="/account">
+            <a class="nav-link mt-auto" href="/register">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Sign Up</span>
             </a>
@@ -121,19 +121,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Zone A (North)</td>
+                                <td>Zone A</td>
                                 <td>Monday, Thursday</td>
                                 <td>7:00 AM - 11:00 AM</td>
                                 <td>Household Waste</td>
                             </tr>
                             <tr>
-                                <td>Zone B (South)</td>
+                                <td>Zone B</td>
                                 <td>Tuesday, Friday</td>
                                 <td>8:00 AM - 12:00 PM</td>
                                 <td>Household Waste</td>
                             </tr>
                             <tr>
-                                <td>Zone C (East)</td>
+                                <td>Zone C</td>
                                 <td>Wednesday, Saturday</td>
                                 <td>7:30 AM - 11:30 AM</td>
                                 <td>Household Waste</td>
@@ -172,7 +172,7 @@
                                 <td><span class="badge badge-primary">Scheduled</span></td>
                             </tr>
                             <tr>
-                                <td>Riverside Green</td>
+                                <td>Riverside Park</td>
                                 <td>Tuesday, Thursday</td>
                                 <td>Lawn Mowing</td>
                                 <td><span class="badge badge-primary">Scheduled</span></td>
@@ -205,19 +205,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Uptown Sector 1</td>
+                                <td>Area 1</td>
                                 <td>2025-06-25</td>
                                 <td>10:00 AM - 2:00 PM</td>
                                 <td>Planned pipeline inspection</td>
                             </tr>
                             <tr>
-                                <td>Downtown West</td>
+                                <td>Area 2</td>
                                 <td>2025-07-05</td>
                                 <td>1:00 PM - 5:00 PM</td>
                                 <td>Valve replacement</td>
                             </tr>
                             <tr>
-                                <td>Industrial Zone</td>
+                                <td>Area 3</td>
                                 <td>2025-07-15</td>
                                 <td>9:00 AM - 1:00 PM</td>
                                 <td>Routine pump maintenance</td>
@@ -238,9 +238,9 @@
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50"> Services & Permits</a></li>
-                        <li><a href="#" class="text-white-50"> Online Payments</a></li>
-                        <li><a href="#" class="text-white-50"> Public Notices</a></li>
+                        <li><a href="/timetable" class="text-white-50"> Services & Permits</a></li>
+                        <li><a href="/payment" class="text-white-50"> Online Payments</a></li>
+                        <li><a href="/community" class="text-white-50"> Public Notices</a></li>
                     </ul>
                 </div>
 

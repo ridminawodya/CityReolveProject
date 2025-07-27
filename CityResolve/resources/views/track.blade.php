@@ -84,7 +84,7 @@
                 <span class="nav-text">Tax Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="/account">
+            <a class="nav-link mt-auto" href="/register">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Sign Up</span>
             </a>
@@ -134,9 +134,9 @@
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50"> Services & Permits</a></li>
-                        <li><a href="#" class="text-white-50"> Online Payments</a></li>
-                        <li><a href="#" class="text-white-50"> Public Notices</a></li>
+                        <li><a href="/timetable" class="text-white-50"> Services & Permits</a></li>
+                        <li><a href="/payment" class="text-white-50"> Online Payments</a></li>
+                        <li><a href="/community" class="text-white-50"> Public Notices</a></li>
                     </ul>
                 </div>
 
