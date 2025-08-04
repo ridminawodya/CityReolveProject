@@ -14,13 +14,14 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 
+Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
+    Route::get('/admin/admindashboard', function () {
+        return view('admin.admindashboard');
+    })->name('admin.admindashboard');
+});
 
 // Add the POST route for language switching
 Route::post('/language/switch', [LanguageController::class, 'switch'])->name('language.switch');
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 Route::get('/', function () {
     return view('home');

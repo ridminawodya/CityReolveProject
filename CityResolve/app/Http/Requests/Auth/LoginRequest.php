@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log; // ADD THIS LINE
 
 class LoginRequest extends FormRequest
 {
@@ -41,8 +42,24 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
+        // DEBUGGING: Log the credentials being attempted
+        Log::info('Login attempt for username: ' . $this->input('username') . ' from IP: ' . $this->ip());
+        Log::info('Remember me: ' . ($this->boolean('remember') ? 'true' : 'false'));
+
+        // Attempt authentication
+        $attempt = Auth::attempt(
+            $this->only('username', 'password'),
+            $this->boolean('remember')
+        );
+
+        // DEBUGGING: Log the result of Auth::attempt
+        Log::info('Auth::attempt result: ' . ($attempt ? 'TRUE' : 'FALSE'));
+
+        if (! $attempt) {
             RateLimiter::hit($this->throttleKey());
+
+            // DEBUGGING: Log if authentication failed
+            Log::warning('Authentication FAILED for username: ' . $this->input('username') . '. Trans message: ' . trans('auth.failed'));
 
             throw ValidationException::withMessages([
                 'username' => trans('auth.failed'),
@@ -50,6 +67,8 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+        // DEBUGGING: Log if authentication succeeded
+        Log::info('Authentication SUCCESSFUL for username: ' . $this->input('username'));
     }
 
     /**
