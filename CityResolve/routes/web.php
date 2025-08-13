@@ -1,42 +1,28 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FundTaxController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LanguageController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 
-Route::group(['middleware' => 'web'], function () {
-    // Set the application locale if stored in the session
-    Route::get('/', function () {
-        if (Session::has('locale')) {
-            App::setLocale(Session::get('locale'));
-        }
-        return view('home'); // Or whatever your default landing view is
-    });
+// Public routes
+Route::get('/welcome', function () {
+    return view('welcome');
 });
-
-Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
-    Route::get('/admin/admindashboard', function () {
-        return view('admin.admindashboard');
-    })->name('admin.admindashboard');
-});
-
-// Add the POST route for language switching
-Route::post('/language/switch', [LanguageController::class, 'switch'])->name('language.switch');
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/about', function () {
     return view('about');
-});
-
-Route::get('/register', function () {
-    return view('register');
 });
 
 Route::get('/community', function () {
@@ -52,8 +38,10 @@ Route::get('/profileweb', function () {
 });
 
 Route::get('/submit', function () {
-    return view('submit');
+    return view('complaints.create');
 });
+Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+Route::get('/complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
 
 Route::get('/timetable', function () {
     return view('timetable');
@@ -63,12 +51,36 @@ Route::get('/track', function () {
     return view('track');
 });
 
+// Authenticated routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    
+    Route::get('/account', function () {
+        return view('account');
+    });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    // The main dashboard route now points to a Home Controller
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+    // Admin routes - protected by the admin middleware
+    Route::middleware(EnsureUserIsAdmin::class)->prefix('admin')->name('admin.')->group(function () {
+        // This is the actual admin dashboard route
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Custom route for exporting users. This must be defined BEFORE the resource route.
+        Route::get('users/export', [AdminUserController::class, 'export'])->name('users.export');
+        
+        // This single line handles all user-related CRUD routes (index, create, store, etc.)
+        Route::resource('users', AdminUserController::class);
+
+        // Resource routes for departments and fund-taxes
+        Route::resource('departments', DepartmentController::class);
+        Route::resource('fund-taxes', FundTaxController::class);
+
+        // Custom route for reports
+        Route::get('reports', [ReportController::class, 'index'])->name('reports');
+    });
+
+    // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

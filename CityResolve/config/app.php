@@ -84,11 +84,6 @@ return [
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
-    'supported_locales' => [ // Renamed from 'available_locales' for common convention, but 'available_locales' also works
-        'en' => 'English',
-        'si' => 'සිංහල', // Sinhala
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -106,7 +101,7 @@ return [
 
     'previous_keys' => [
         ...array_filter(
-            explode(',', env('APP_PREVIOUS_KEYS', ''))
+            explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
 

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log; // ADD THIS LINE
 
 class LoginRequest extends FormRequest
 {
@@ -28,8 +27,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'remember' => ['boolean'],
         ];
     }
 
@@ -42,33 +42,15 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        // DEBUGGING: Log the credentials being attempted
-        Log::info('Login attempt for username: ' . $this->input('username') . ' from IP: ' . $this->ip());
-        Log::info('Remember me: ' . ($this->boolean('remember') ? 'true' : 'false'));
-
-        // Attempt authentication
-        $attempt = Auth::attempt(
-            $this->only('username', 'password'),
-            $this->boolean('remember')
-        );
-
-        // DEBUGGING: Log the result of Auth::attempt
-        Log::info('Auth::attempt result: ' . ($attempt ? 'TRUE' : 'FALSE'));
-
-        if (! $attempt) {
+        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
-            // DEBUGGING: Log if authentication failed
-            Log::warning('Authentication FAILED for username: ' . $this->input('username') . '. Trans message: ' . trans('auth.failed'));
-
             throw ValidationException::withMessages([
-                'username' => trans('auth.failed'),
+                'email' => trans('auth.failed'),
             ]);
         }
 
         RateLimiter::clear($this->throttleKey());
-        // DEBUGGING: Log if authentication succeeded
-        Log::info('Authentication SUCCESSFUL for username: ' . $this->input('username'));
     }
 
     /**
@@ -87,7 +69,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'username' => trans('auth.throttle', [
+            'email' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -99,6 +81,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('username')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
     }
 }

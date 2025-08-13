@@ -84,7 +84,7 @@
                 <span class="nav-text">Payments</span>
             </a>
 
-            <a class="nav-link mt-auto activ" href="/account">
+            <a class="nav-link mt-auto activ" href="/register">
                 <i class="bi bi-box-arrow-right fs-5"></i>
                 <span class="nav-text">Sign Up</span>
             </a>

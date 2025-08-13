@@ -24,14 +24,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-translate fs-5"></i>
                         <span class="nav-text">Sinhala</span>
                     </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/home">
                         <i class="bi bi-globe fs-5"></i>
                         <span class="nav-text">English</span>
                     </a>
@@ -171,9 +171,9 @@
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/timetable" class="text-white-50"> Services & Permits</a></li>
-                        <li><a href="/payment" class="text-white-50"> Online Payments</a></li>
-                        <li><a href="/community" class="text-white-50"> Public Notices</a></li>
+                        <li><a href="#" class="text-white-50"> Services & Permits</a></li>
+                        <li><a href="#" class="text-white-50"> Online Payments</a></li>
+                        <li><a href="#" class="text-white-50"> Public Notices</a></li>
                     </ul>
                 </div>
 
