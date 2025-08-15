@@ -24,17 +24,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <i class="bi bi-translate fs-5"></i>
-                        <span class="nav-text">Sinhala</span>
-                    </a>
+                        <a class="nav-link mt-auto" href="/register">
+                        <i class="bi bi-box-arrow-right fs-5"></i>
+                        <span class="nav-text">Sign Up</span>
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <i class="bi bi-globe fs-5"></i>
-                        <span class="nav-text">English</span>
-                    </a>
+                        <a class="nav-link" href="/login">
+                        <i class="bi bi-person-circle fs-5"></i>
+                        <span class="nav-text">Login</span>
+                        </a>
                     </li>
                 </ul>
             </div>

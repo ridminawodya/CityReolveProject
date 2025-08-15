@@ -1,73 +1,35 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-class User extends Authenticatable
+return new class extends Migration
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
-
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
+     * Run the migrations.
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'usertype', // Changed from 'role' to 'usertype'
-        'department_id',
-        'status',
-        'user_type',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function up(): void
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('usertype')->default('user'); // Matches 'usertype' in $fillable// Foreign key to departments
+            $table->string('status')->default('active'); // Assuming string (e.g., 'active', 'inactive')
+            $table->string('user_type')->nullable(); // Matches 'user_type' in $fillable
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**
-     * Helper method to get role (maps usertype to role)
+     * Reverse the migrations.
      */
-    public function getRoleAttribute()
+    public function down(): void
     {
-        return $this->usertype;
+        Schema::dropIfExists('users');
     }
-
-    /**
-     * Check if user is admin
-     */
-    public function isAdmin()
-    {
-        return $this->usertype === 'admin';
-    }
-}
+};

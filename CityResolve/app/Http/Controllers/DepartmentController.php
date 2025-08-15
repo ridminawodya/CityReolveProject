@@ -24,8 +24,7 @@ class DepartmentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:departments,name',
-            'description' => 'nullable|string|max:500',
-            'status' => 'required|in:active,inactive'
+            'description' => 'nullable|string|max:500'
         ]);
         
         Department::create($validated);
@@ -52,8 +51,7 @@ class DepartmentController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255', Rule::unique('departments', 'name')->ignore($department->id)],
-            'description' => 'nullable|string|max:500',
-            'status' => 'required|in:active,inactive'
+            'description' => 'nullable|string|max:500'
         ]);
         
         $department->update($validated);

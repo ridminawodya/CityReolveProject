@@ -226,6 +226,288 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Add these styles to your styles3.css file */
+
+/* Complaint Details Styling */
+.complaint-details {
+    border-left: 4px solid var(--primary-green) !important;
+    background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(34, 197, 94, 0.05) 100%) !important;
+    border-radius: 15px !important;
+    padding: 25px !important;
+    box-shadow: var(--shadow-soft) !important;
+}
+
+.complaint-details-card {
+    background: transparent;
+}
+
+/* Complaint Details Styling */
+.complaint-details {
+    border-left: 4px solid #28a745;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.complaint-header h4 {
+    margin: 0;
+    color: #155724;
+    font-weight: 600;
+}
+
+.complaint-id-badge {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h5 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.info-card h5 i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.info-card p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.info-card strong {
+    color: #343a40;
+    font-weight: 600;
+}
+
+.admin-notes {
+    border-left: 4px solid #ffc107;
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+}
+
+.admin-notes h5 {
+    color: #856404;
+}
+
+/* Status Timeline */
+.status-timeline {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.status-timeline h5 {
+    color: #495057;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.status-timeline h5 i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #dee2e6;
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    z-index: 2;
+}
+
+.timeline-marker {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.timeline-item.active .timeline-marker {
+    border-color: #28a745;
+    background: #28a745;
+    color: white;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.2);
+}
+
+.timeline-item.current .timeline-marker {
+    border-color: #007bff;
+    background: #007bff;
+    color: white;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.timeline-content span {
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.timeline-item.active .timeline-content span,
+.timeline-item.current .timeline-content span {
+    color: #495057;
+    font-weight: 600;
+}
+
+/* Badge Styling */
+.badge {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* Error State Styling */
+.alert-danger {
+    border-left: 4px solid #dc3545;
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+}
+
+.alert-danger h4 {
+    color: #721c24;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .complaint-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .complaint-id-badge {
+        align-self: stretch;
+        text-align: center;
+    }
+    
+    .timeline {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 15px;
+    }
+    
+    .timeline-marker {
+        margin: 0;
+        flex-shrink: 0;
+    }
+    
+    .timeline-content {
+        flex: 1;
+    }
+}
+
+/* Track Form Enhancements */
+.track-form .input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.track-form .form-control {
+    border-radius: 25px;
+    padding: 12px 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.track-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.track-form .btn-primary {
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.track-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
 .input-group {
     position: relative;
     margin-bottom: 1.5rem;

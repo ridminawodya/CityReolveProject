@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CityResolve - Submit a Complaint</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -13,7 +14,7 @@
 <body>
     <div class="animated-bg"></div>
 
-<nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="bi bi-buildings"></i>CityResolve
@@ -25,17 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-translate fs-5"></i>
-                        <span class="nav-text">Sinhala</span>
-                    </a>
+                        <a class="nav-link mt-auto" href="/register">
+                            <i class="bi bi-box-arrow-right fs-5"></i>
+                            <span class="nav-text">Sign Up</span>
+                        </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-globe fs-5"></i>
-                        <span class="nav-text">English</span>
-                    </a>
+                        <a class="nav-link" href="/login">
+                            <i class="bi bi-person-circle fs-5"></i>
+                            <span class="nav-text">Login</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -43,148 +43,134 @@
     </nav>
 
     <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-    <i class="bi bi-list"></i>
-</button>
+        <i class="bi bi-list"></i>
+    </button>
 
-<div class="sidebar-nav" id="sidebar">
+    <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100 py-20">
             <a class="nav-link" href="/">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
-
             <a class="nav-link active" href="/submit">
                 <i class="bi bi-pencil-square fs-5"></i>
                 <span class="nav-text">Submit Complaint</span>
             </a>
-
             <a class="nav-link" href="/track">
                 <i class="bi bi-search fs-5"></i>
                 <span class="nav-text">Track Status</span>
             </a>
-
             <a class="nav-link" href="/community">
                 <i class="bi bi-people-fill fs-5"></i>
                 <span class="nav-text">Community</span>
             </a>
-
             <a class="nav-link" href="/timetable">
                 <i class="bi bi-calendar-check fs-5"></i>
                 <span class="nav-text">Service Schedule</span>
             </a>
-
             <a class="nav-link" href="/about">
                 <i class="bi bi-info-circle fs-5"></i>
                 <span class="nav-text">About Us</span>
             </a>
-
             <a class="nav-link" href="/payment">
                 <i class="bi bi-credit-card fs-5"></i>
                 <span class="nav-text">Tax Payments</span>
             </a>
-
-            <a class="nav-link mt-auto" href="/register">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-                <span class="nav-text">Sign Up</span>
-            </a>
-
-            <a class="nav-link" href="/login">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="nav-text">Login</span>
-            </a>
-
         </div>
     </div>
 
-<div class="main-content">
-<section class="form-section">
-        <div class="form-container">
-            <h2 class="form-title">
-                <i class="bi bi-send"></i> Submit a Complaint
-            </h2>
-            
-            <div class="success-message" id="successMessage">
-                <i class="bi bi-check-circle"></i> Your complaint has been submitted successfully!
+    <div class="main-content">
+        <section class="form-section">
+            <div class="form-container">
+                <h2 class="form-title">
+                    <i class="bi bi-send"></i> Submit a Complaint
+                </h2>
+                
+                <div class="alert alert-success d-none" id="successMessage">
+                    <i class="bi bi-check-circle"></i> Your complaint has been submitted successfully!
+                </div>
+
+                <div class="alert alert-danger d-none" id="errorMessage">
+                    <i class="bi bi-exclamation-triangle"></i> There was an error with your submission. Please check the form and try again.
+                    <ul id="errorList"></ul>
+                </div>
+
+                <form id="complaintForm" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-person"></i> First Name
+                        </label>
+                        <input type="text" class="form-control" name="first_name" placeholder="Enter your first name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-person"></i> Last Name
+                        </label>
+                        <input type="text" class="form-control" name="last_name" placeholder="Enter your last name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-envelope"></i> Email Address
+                        </label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-phone"></i> Contact No
+                        </label>
+                        <input type="tel" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-tag"></i> Category
+                        </label>
+                        <select class="form-select" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="road">Road & Transportation</option>
+                            <option value="water">Water & Sanitation</option>
+                            <option value="electricity">Electricity</option>
+                            <option value="garbage">Garbage Collection</option>
+                            <option value="noise">Noise Pollution</option>
+                            <option value="street-lights">Street Lights</option>
+                            <option value="parks">Parks & Recreation</option>
+                            <option value="building">Building & Construction</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-pencil-square"></i> Description
+                        </label>
+                        <textarea class="form-control" name="description" rows="5" placeholder="Describe your issue..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-geo-alt"></i> Location
+                        </label>
+                        <input type="text" class="form-control" name="location" placeholder="Enter location" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-camera"></i> Attach Photo (optional)
+                        </label>
+                        <input type="file" class="form-control" name="photo" accept="image/*">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="submit-btn">
+                            <i class="bi bi-send"></i> Submit Complaint
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <form id="complaintForm">
-                {{-- Added fields for First Name, Last Name, Email Address, and Contact No. --}}
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-person"></i> First Name
-                    </label>
-                    <input type="text" class="form-control" placeholder="Enter your first name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-person"></i> Last Name
-                    </label>
-                    <input type="text" class="form-control" placeholder="Enter your last name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-envelope"></i> Email Address
-                    </label>
-                    <input type="email" class="form-control" placeholder="Enter your email address" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-phone"></i> Contact No
-                    </label>
-                    <input type="tel" class="form-control" placeholder="Enter your contact number" required>
-                </div>
-                {{-- End of added fields --}}
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-tag"></i> Category
-                    </label>
-                    <select class="form-select" required>
-                        <option value="">Select Category</option>
-                        <option value="road">Road & Transportation</option>
-                        <option value="water">Water & Sanitation</option>
-                        <option value="electricity">Electricity</option>
-                        <option value="garbage">Garbage Collection</option>
-                        <option value="noise">Noise Pollution</option>
-                        <option value="street-lights">Street Lights</option>
-                        <option value="parks">Parks & Recreation</option>
-                        <option value="building">Building & Construction</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-pencil-square"></i> Description
-                    </label>
-                    <textarea class="form-control" rows="5" placeholder="Describe your issue..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-geo-alt"></i> Location
-                    </label>
-                    <input type="text" class="form-control" placeholder="Enter location" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="bi bi-camera"></i> Attach Photo (optional)
-                    </label>
-                    <input type="file" class="form-control" accept="image/*">
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="submit-btn">
-                        <i class="bi bi-send"></i>
-                        Submit Complaint
-                    </button>
-                </div>
-            </form>
-        </div>
         </section>
     </div>
 
@@ -195,9 +181,9 @@
                 <div class="col-md-4 col-lg-4 mb-4 mb-md-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50"> Services & Permits</a></li>
-                        <li><a href="#" class="text-white-50"> Online Payments</a></li>
-                        <li><a href="#" class="text-white-50"> Public Notices</a></li>
+                        <li><a href="/timetable" class="text-white-50"> Services & Permits</a></li>
+                        <li><a href="/payment" class="text-white-50"> Online Payments</a></li>
+                        <li><a href="/community" class="text-white-50"> Public Notices</a></li>
                     </ul>
                 </div>
 
@@ -216,27 +202,22 @@
                     <h5>Stay Connected</h5>
                     <p class="text-white-50">Follow us on social media for updates and news.</p>
                     <div class="d-flex justify-content-center gap-2 mb-4 social-icon-wrapper">
-
                         <a href="https://facebook.com/yourcouncil" target="_blank" aria-label="Facebook"
                            class="social-icon-link facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
-
                         <a href="https://instagram.com/yourcouncil" target="_blank" aria-label="Instagram"
                            class="social-icon-link instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
-
                         <a href="https://twitter.com/yourcouncil" target="_blank" aria-label="Twitter"
                            class="social-icon-link twitter">
                             <i class="bi bi-twitter"></i>
                         </a>
-
                         <a href="https://linkedin.com/company/yourcouncil" target="_blank" aria-label="LinkedIn"
                            class="social-icon-link linkedin">
                             <i class="bi bi-linkedin"></i>
                         </a>
-
                     </div>
                 </div>
             </div>

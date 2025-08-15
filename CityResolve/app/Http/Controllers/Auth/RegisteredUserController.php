@@ -33,13 +33,15 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // The 'role' validation rule was incorrect because the user isn't submitting a role.
+            // We'll remove this and set the role directly in the User::create() method.
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'user_type' => $request->user_type ?? 'user',
+            'role' => 'citizen', 
         ]);
 
         event(new Registered($user));

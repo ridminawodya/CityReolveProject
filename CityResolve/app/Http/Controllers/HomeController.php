@@ -4,36 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User; // Don't forget to import the User model
-use App\Models\Department; // Don't forget to import the Department model
 
 class HomeController extends Controller
 {
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Handle the incoming request.
      */
     public function index()
     {
-        // Fetch the users and departments and pass them to the view
-        $users = User::all();
-        $departments = Department::all();
-        return view('admin.dashboard', compact('users', 'departments'));
-    }
+        // Check if the user is authenticated.
+        if (Auth::check()) {
+            $user = Auth::user();
 
-    /**
-     * Redirect users to the appropriate dashboard based on their user type.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
-     */
-    public function redirectToDashboard()
-    {
-        if (Auth::user()->usertype === 'admin') {
-            return redirect()->route('admin.dashboard');
+            // The original error was using hasRole as a property ($user->hasRole)
+            // It should be a method with the role name as a parameter ($user->hasRole('role-name'))
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role === 'citizen' || $user->role === 'user') {
+                return redirect()->route('citizen.dashboard');
+            }
         }
         
-        // Return the regular dashboard view directly instead of redirecting.
-        return view('/');
+        // If the user is authenticated but has no recognized role, or if they are not authenticated,
+        // we'll redirect them to the home page. The 'auth' middleware should prevent unauthenticated
+        // users from reaching this point, but this is a safe fallback.
+        return redirect('/');
     }
 }

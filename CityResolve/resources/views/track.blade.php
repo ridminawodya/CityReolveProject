@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CityResolve - Track Your Complaint</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,17 +26,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-translate fs-5"></i>
-                        <span class="nav-text">Sinhala</span>
-                    </a>
+                        <a class="nav-link mt-auto" href="/register">
+                        <i class="bi bi-box-arrow-right fs-5"></i>
+                        <span class="nav-text">Sign Up</span>
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-globe fs-5"></i>
-                        <span class="nav-text">English</span>
-                    </a>
+                        <a class="nav-link" href="/login">
+                        <i class="bi bi-person-circle fs-5"></i>
+                        <span class="nav-text">Login</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -84,16 +85,6 @@
                 <span class="nav-text">Tax Payments</span>
             </a>
 
-            <a class="nav-link mt-auto" href="/register">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-                <span class="nav-text">Sign Up</span>
-            </a>
-
-            <a class="nav-link" href="/login">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="nav-text">Login</span>
-            </a>
-
         </div>
     </div>
 
@@ -109,9 +100,12 @@
                     <i class="bi bi-search"></i>Track Your Complaint
                 </h1>
                 
+                <p class="text-muted mb-4 text-center">Enter your complaint ID to check the current status and progress of your submission.</p>
+                
                 <form id="trackForm" class="track-form">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" id="complaintId" placeholder="Enter your Complaint ID" required>
+                        <input type="text" class="form-control" id="complaintId" placeholder="Enter your Complaint ID (e.g., 123)" required>
                     </div>
                     
                     <button type="submit" class="btn-primary">
@@ -119,8 +113,8 @@
                     </button>
                 </form>
                 
-                <div id="trackResult" class="alert alert-info d-none">
-<!-- Complaint status will be displayed here -->
+                <div id="trackResult" class="d-none mt-4">
+                    <!-- Complaint status will be displayed here -->
                 </div>
             </div>
         </div>

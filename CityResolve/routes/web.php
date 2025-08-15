@@ -3,23 +3,21 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminComplaintController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FundTaxController;
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\CitizenController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\CookieController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\EnsureUserIsAdmin;
+
+// Authentication routes
+require __DIR__.'/auth.php';
 
 // Public routes
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// This route now uses the CookieController to handle the homepage and pass the cookie status
+Route::get('/', [CookieController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
@@ -38,10 +36,8 @@ Route::get('/profileweb', function () {
 });
 
 Route::get('/submit', function () {
-    return view('complaints.create');
+    return view('submit');
 });
-Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
-Route::get('/complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
 
 Route::get('/timetable', function () {
     return view('timetable');
@@ -51,39 +47,59 @@ Route::get('/track', function () {
     return view('track');
 });
 
-// Authenticated routes
-Route::middleware(['auth', 'verified'])->group(function () {
-    
-    Route::get('/account', function () {
-        return view('account');
-    });
+// Cookie policy routes
+Route::post('/accept-cookie', [CookieController::class, 'accept'])->name('accept-cookie');
+Route::post('/delete-cookie', [CookieController::class, 'deleteCookie'])->name('delete-cookie');
 
-    // The main dashboard route now points to a Home Controller
+
+// Public complaint routes (for form submission and tracking)
+Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+Route::get('/api/complaints/{id}/status', [ComplaintController::class, 'getComplaintStatus'])->name('complaints.status');
+
+// ADD THIS NEW ROUTE FOR POST-based tracking
+Route::post('/track-complaint', [ComplaintController::class, 'trackComplaint'])->name('track.complaint');
+
+// Protected routes that require authentication
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    // Admin routes - protected by the admin middleware
-    Route::middleware(EnsureUserIsAdmin::class)->prefix('admin')->name('admin.')->group(function () {
-        // This is the actual admin dashboard route
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-        // Custom route for exporting users. This must be defined BEFORE the resource route.
-        Route::get('users/export', [AdminUserController::class, 'export'])->name('users.export');
-        
-        // This single line handles all user-related CRUD routes (index, create, store, etc.)
-        Route::resource('users', AdminUserController::class);
-
-        // Resource routes for departments and fund-taxes
-        Route::resource('departments', DepartmentController::class);
-        Route::resource('fund-taxes', FundTaxController::class);
-
-        // Custom route for reports
-        Route::get('reports', [ReportController::class, 'index'])->name('reports');
-    });
-
-    // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
+    // Admin routes
+    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        
+        // Complaint management routes
+        Route::get('/complaints', [AdminComplaintController::class, 'index'])->name('complaints.index');
+        Route::get('/complaints/{complaint}', [AdminComplaintController::class, 'show'])->name('complaints.show');
+        Route::patch('/complaints/{complaint}/status', [AdminComplaintController::class, 'updateStatus'])->name('complaints.updateStatus');
+        Route::delete('/complaints/{complaint}', [AdminComplaintController::class, 'destroy'])->name('complaints.destroy');
+        Route::get('/complaints/export', [AdminComplaintController::class, 'export'])->name('complaints.export');
+        Route::post('/complaints/bulk-update', [AdminComplaintController::class, 'bulkUpdateStatus'])->name('complaints.bulkUpdate');
+
+        // Other admin routes
+        Route::get('users/export', [AdminUserController::class, 'export'])->name('users.export');
+        Route::resource('users', AdminUserController::class);
+        Route::resource('departments', DepartmentController::class);
+        Route::resource('fund-taxes', FundTaxController::class);
+    });
+
+    // Citizen routes
+    Route::middleware(['role:citizen'])->prefix('citizen')->name('citizen.')->group(function () {
+        Route::get('/dashboard', [CitizenController::class, 'index'])->name('dashboard');
+        Route::get('profile/edit', [CitizenController::class, 'editProfile'])->name('profile.edit');
+        Route::put('profile', [CitizenController::class, 'updateProfile'])->name('profile.update');
+
+        // Payment routes
+        Route::prefix('payments')->name('payments.')->group(function () {
+            Route::get('create', [CitizenController::class, 'createPayment'])->name('create');
+            Route::post('store', [CitizenController::class, 'storePayment'])->name('store');
+            
+            // New routes for success and download
+            Route::get('success/{transaction}', [CitizenController::class, 'successPayment'])->name('success');
+            Route::get('receipt/{transaction}', [CitizenController::class, 'downloadReceipt'])->name('downloadReceipt');
+        });
+    });
+});

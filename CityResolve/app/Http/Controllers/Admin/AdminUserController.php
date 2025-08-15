@@ -29,7 +29,7 @@ class AdminUserController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('email', 'like', "%{$search}%")
-                  ->orWhere('usertype', 'like', "%{$search}%");
+                  ->orWhere('role', 'like', "%{$search}%");
             });
         }
         
@@ -57,7 +57,6 @@ class AdminUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-            'usertype' => 'required|string',
             'department_id' => 'nullable|exists:departments,id',
             'status' => 'required|in:active,inactive'
         ]);
@@ -96,7 +95,6 @@ class AdminUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => 'nullable|string|min:8|confirmed',
-            'usertype' => 'required|string',
             'department_id' => 'nullable|exists:departments,id',
             'status' => 'required|in:active,inactive'
         ]);

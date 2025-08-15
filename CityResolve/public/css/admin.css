@@ -1,0 +1,132 @@
+/* Body and Main Layout */
+body {
+    background-color: #f3f4f6; /* Light gray background */
+    font-family: 'figtree', sans-serif;
+}
+
+.admin-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #10b981; /* Green color for the sidebar */
+    color: white;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    padding-top: 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-header img {
+    height: 32px;
+    margin-right: 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #d1d5db;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Add transform transition */
+}
+
+.sidebar-link:hover {
+    background-color: #059669; /* Darker green on hover */
+    color: white;
+    transform: translateX(5px); /* This causes the link to shift right */
+}
+
+.sidebar-link.active {
+    background-color: white;
+    color: #10b981; /* Green text for active link */
+    border-radius: 4px;
+    font-weight: 600;
+    transform: translateX(5px); /* Apply the same shift to the active link */
+}
+
+.sidebar-link svg {
+    margin-right: 10px;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+    min-width: 0; /* Add this to prevent overflow */
+}
+
+.main-header {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #10b981;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Dashboard Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.dashboard-card h3 {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.dashboard-card .value {
+    font-size: 40px;
+    font-weight: 700;
+    color: #10b981;
+}

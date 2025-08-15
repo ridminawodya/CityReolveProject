@@ -12,7 +12,11 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
+    <!-- This is for files in the 'resources' folder that get compiled by Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- This is for static CSS files located in your 'public' folder -->
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">

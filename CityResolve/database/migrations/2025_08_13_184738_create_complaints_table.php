@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('complaints', function (Blueprint $table) {
@@ -19,15 +16,14 @@ return new class extends Migration
             $table->string('contact_no');
             $table->string('category');
             $table->text('description');
-            $table->string('location')->nullable();
+            $table->string('location');
             $table->string('photo')->nullable();
+            $table->enum('status', ['pending', 'in_progress', 'resolved', 'closed'])->default('pending');
+            $table->text('admin_notes')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('complaints');

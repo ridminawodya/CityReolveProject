@@ -8,6 +8,76 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css')}}">
+    <style>
+        /* Custom CSS for the new, visually appealing cookie banner */
+        .cookie-consent-card {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(33, 37, 41, 0.9); /* Dark background with transparency */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cookie-consent-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-consent-card .card-text {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+
+        .cookie-consent-card .cookie-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: flex-end;
+        }
+
+        .cookie-consent-card .btn-custom-accept {
+            background-color: #198754; /* Green */
+            border-color: #198754;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .cookie-consent-card .btn-custom-accept:hover {
+            background-color: #157347;
+            border-color: #146c43;
+        }
+
+        .cookie-consent-card .btn-custom-decline {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .cookie-consent-card .btn-custom-decline:hover {
+            border-color: #fff;
+            color: #fff;
+        }
+
+    </style>
 </head>
 <body>
     <div class="animated-bg"></div>
@@ -24,17 +94,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-translate fs-5"></i>
-                        <span class="nav-text">Sinhala</span>
-                    </a>
+                        <a class="nav-link mt-auto" href="/register">
+                        <i class="bi bi-box-arrow-right fs-5"></i>
+                        <span class="nav-text">Sign Up</span>
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/home">
-                        <i class="bi bi-globe fs-5"></i>
-                        <span class="nav-text">English</span>
-                    </a>
+                        <a class="nav-link" href="/login">
+                        <i class="bi bi-person-circle fs-5"></i>
+                        <span class="nav-text">Login</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +117,7 @@
 
     <div class="sidebar-nav" id="sidebar">
         <div class="d-flex flex-column h-100 py-20">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/">
                 <i class="bi bi-house-door nav-icon fs-5"></i>
                 <span class="nav-text">Home</span>
             </a>
@@ -81,17 +151,6 @@
                 <i class="bi bi-credit-card fs-5"></i>
                 <span class="nav-text">Tax Payments</span>
             </a>
-
-            <a class="nav-link mt-auto" href="/register">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-                <span class="nav-text">Sign Up</span>
-            </a>
-
-            <a class="nav-link" href="/login">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="nav-text">Login</span>
-            </a>
-
         </div>
     </div>
 
@@ -324,6 +383,28 @@
         </div>
     </footer>
 
+    <!-- Cookie Consent Banner - Visually appealing version -->
+    @if (!$hasAccepted)
+        <div class="cookie-consent-card">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="bi bi-cookie fs-2" style="color: #66cc99;"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">This site uses cookies</h5>
+                    <p class="card-text">We use cookies to improve your browsing experience. By continuing to use our site, you agree to our <a href="#" class="text-decoration-underline text-white-50">Privacy Policy</a> and <a href="#" class="text-decoration-underline text-white-50">Terms of Service</a>.</p>
+                </div>
+            </div>
+            <div class="cookie-buttons">
+                <form action="{{ route('accept-cookie') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-custom-accept">Accept</button>
+                </form>
+                <button type="button" class="btn btn-custom-decline">Decline</button>
+            </div>
+        </div>
+    @endif
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('js/script.js')}}"></script>
 </body>

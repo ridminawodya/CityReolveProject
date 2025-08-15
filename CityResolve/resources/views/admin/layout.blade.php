@@ -5,202 +5,242 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} - Admin</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
     <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            font-family: 'figtree', sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        /* Fixed Sidebar Styling */
         .sidebar {
-            width: 250px;
-            background-color: #1f2937;
-            color: white;
-            min-height: 100vh;
             position: fixed;
-            left: 0;
             top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
             z-index: 1000;
-        }
-        
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-        
-        .sidebar-link {
-            display: block;
-            padding: 12px 20px;
-            color: #d1d5db;
-            text-decoration: none;
-            border-bottom: 1px solid #374151;
-            transition: background-color 0.3s;
-        }
-        
-        .sidebar-link:hover {
-            background-color: #374151;
-            color: white;
-        }
-        
-        .sidebar-link.active {
-            background-color: #3b82f6;
-            color: white;
+            overflow-y: auto;
         }
         
         .sidebar-header {
-            padding: 20px;
-            background-color: #111827;
-            border-bottom: 1px solid #374151;
+            text-align: center;
+            padding: 10px 20px;
+            margin-bottom: 20px;
         }
-        
-        .btn {
-            padding: 8px 16px;
-            border-radius: 4px;
+
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .sidebar-header p {
+            font-size: 0.875rem;
+            color: #4a5568;
+            margin: 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin: 0;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: #4a5568;
             text-decoration: none;
-            display: inline-block;
-            margin: 2px;
-        }
-        
-        .btn-primary {
-            background-color: #3b82f6;
-            color: white;
-        }
-        
-        .btn-success {
-            background-color: #10b981;
-            color: white;
-        }
-        
-        .btn-danger {
-            background-color: #ef4444;
-            color: white;
-        }
-        
-        .btn-secondary {
-            background-color: #6b7280;
-            color: white;
-        }
-        
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        .table th,
-        .table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .table th {
-            background-color: #f9fafb;
-            font-weight: 600;
-        }
-        
-        .form-group {
-            margin-bottom: 16px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 4px;
+            font-size: 1rem;
             font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #e2e8f0;
+            color: #10b981;
+        }
+
+        .sidebar-nav a.active {
+            color: white;
+            background-color: #10b981;
+            box-shadow: inset 5px 0 0 #059669;
         }
         
-        .form-control {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            font-size: 14px;
+        .sidebar-nav a.active .menu-icon {
+            color: white;
         }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+
+        .menu-icon {
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+            color: #a0aec0;
         }
-        
-        .alert {
-            padding: 12px 16px;
-            border-radius: 4px;
-            margin-bottom: 20px;
+
+        .sidebar-nav a:hover .menu-icon {
+            color: #10b981;
         }
-        
-        .alert-success {
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+
+        .sidebar-nav a.active:hover .menu-icon {
+            color: white;
         }
-        
-        .alert-danger {
-            background-color: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
+
+        /* Main content area */
+        .main-content {
+            margin-left: 250px;
+            min-height: 100vh;
+            padding: 30px;
+            background-color: #f1f5f9;
         }
-        
-        .search-form {
-            margin-bottom: 20px;
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1001;
+                background: #10b981;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
         }
-        
-        .search-input {
-            display: inline-block;
-            width: 300px;
-            margin-right: 10px;
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        /* Ensure no conflicts with page content */
+        .main-content * {
+            position: relative;
         }
     </style>
+    
+    <!-- Additional styles from individual pages -->
+    @stack('styles')
 </head>
-<body class="font-sans antialiased">
-    <div class="sidebar">
+<body>
+    <!-- Mobile menu button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Fixed Sidebar -->
+    <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h2 class="text-xl font-bold">Admin Panel</h2>
+            <h1>Admin Portal</h1>
+            <p>Management Dashboard</p>
         </div>
-        <nav>
-            <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                Dashboard
-            </a>
-            <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                User Management
-            </a>
-            <a href="{{ route('admin.departments.index') }}" class="sidebar-link {{ request()->routeIs('admin.departments.*') ? 'active' : '' }}">
-                Department Management
-            </a>
-            <a href="{{ route('admin.fund-taxes.index') }}" class="sidebar-link {{ request()->routeIs('admin.fund-taxes.*') ? 'active' : '' }}">
-                Fund & Tax Management
-            </a>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <i class="fas fa-chart-line menu-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                        <i class="fas fa-users menu-icon"></i>
+                        <span>User Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.departments.index') }}" class="{{ request()->routeIs('admin.departments.*') ? 'active' : '' }}">
+                        <i class="fas fa-building menu-icon"></i>
+                        <span>Department Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.fund-taxes.index') }}" class="{{ request()->routeIs('admin.fund-taxes.*') ? 'active' : '' }}">
+                        <i class="fas fa-dollar-sign menu-icon"></i>
+                        <span>Tax Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.complaints.index') }}" class="{{ request()->routeIs('admin.complaints.*') ? 'active' : '' }}">
+                        <i class="fas fa-exclamation-circle menu-icon"></i>
+                        <span>Complaint Management</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
-    </div>
+    </aside>
 
-    <div class="main-content">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul style="margin: 0; padding-left: 20px;">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+    <!-- Main Content -->
+    <main class="main-content">
         @yield('content')
-    </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
+        }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const isClickInsideSidebar = sidebar.contains(event.target);
+            const isClickOnMenuBtn = menuBtn.contains(event.target);
+            
+            if (!isClickInsideSidebar && !isClickOnMenuBtn && window.innerWidth <= 768) {
+                sidebar.classList.remove('mobile-open');
+            }
+        });
+    </script>
+    
+    <!-- Additional scripts from individual pages -->
+    @stack('scripts')
 </body>
 </html>
-

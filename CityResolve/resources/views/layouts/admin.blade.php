@@ -11,9 +11,9 @@
         <aside class="w-full md:w-64 bg-gradient-to-br from-green-700 to-green-900 text-white p-4">
             <nav>
                 <a href="{{ route('dashboard') }}" class="block p-3 hover:bg-green-600">Dashboard</a>
-                <a href="{{ route('admin.users') }}" class="block p-3 hover:bg-green-600">User Management</a>
-                <a href="{{ route('admin.departments') }}" class="block p-3 hover:bg-green-600">Department Management</a>
-                <a href="{{ route('admin.fund-taxes') }}" class="block p-3 hover:bg-green-600">Fund Allocations</a>
+                <a href="{{ route('admin.users.index') }}" class="block p-3 hover:bg-green-600">User Management</a>
+                <a href="{{ route('admin.departments.index') }}" class="block p-3 hover:bg-green-600">Department Management</a>
+                <a href="{{ route('admin.fund-taxes.index') }}" class="block p-3 hover:bg-green-600">Fund Allocations</a>
             </nav>
         </aside>
 
